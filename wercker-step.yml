@@ -1,0 +1,30 @@
+name: gradle-portal-deploy
+version: 0.0.1
+description: Deploy a gradle plugin to the Gradle Plugin Portal.
+keywords:
+  - gradle, portal, plugin, deploy
+properties:
+  version:
+    type: string
+    required: false
+  website:
+    type: string
+    required: fals
+  vcs_url:
+    type: string
+    required: false
+  description:
+    type: string
+    required: false
+  tags:
+    type: string
+    required: false
+  plugin_id:
+    type: string
+    required: false
+  display_name:
+    type: string
+    required: false
+  artifact_id:
+    type: string
+    required: false

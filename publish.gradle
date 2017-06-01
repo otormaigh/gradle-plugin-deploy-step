@@ -1,0 +1,33 @@
+buildscript {
+  repositories {
+    maven { url "https://plugins.gradle.org/m2/" }
+  }
+  dependencies {
+    classpath "com.gradle.publish:plugin-publish-plugin:0.9.7"
+  }
+}
+apply plugin: "com.gradle.plugin-publish"
+
+final isSnapshot = System.getenv('VERSION').endsWith('-SNAPSHOT')
+
+pluginBundle {
+  website = System.getenv('WEBSITE')
+  vcsUrl = System.getenv('VCS_URL')
+  description = System.getenv('DESCRIPTION')
+  tags = System.getenv('TAGS')
+
+  plugins {
+    plugin {
+      id = System.getenv('PLUGIN_ID')
+      displayName = System.getenv('DISPLAY_NAME')
+      version = System.getenv('VERSION')
+    }
+}
+
+mavenCoordinates {
+    groupId = System.getenv('PLUGIN_ID')
+    artifactId = System.getenv('ARTIFACT_ID')
+    version = System.getenv('VERSION')
+}
+
+publishPlugins.enabled = !isSnapshot
